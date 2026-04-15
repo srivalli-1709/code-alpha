@@ -1,0 +1,73 @@
+import java.util.*;
+
+class Room {
+    int roomNo;
+    String type;
+    boolean isBooked;
+
+    Room(int roomNo, String type) {
+        this.roomNo = roomNo;
+        this.type = type;
+        this.isBooked = false;
+    }
+}
+
+public class Task4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // ArrayList for rooms
+        ArrayList<Room> rooms = new ArrayList<>();
+
+        // Rooms: 101 Standard, 102 Deluxe, 103 Suite
+        rooms.add(new Room(101, "Standard"));
+        rooms.add(new Room(102, "Deluxe"));
+        rooms.add(new Room(103, "Suite"));
+
+        while (true) {
+            System.out.println("1. View Rooms");
+            System.out.println("2. Book Room");
+            System.out.println("3. Cancel Booking");
+            System.out.println("4. Exit");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    for (Room r : rooms) {
+                        System.out.println("Room No: " + r.roomNo +
+                                ", Type: " + r.type +
+                                ", Booked: " + r.isBooked);
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter room number to book: ");
+                    int bookNo = sc.nextInt();
+                    for (Room r : rooms) {
+                        if (r.roomNo == bookNo && !r.isBooked) {
+                            r.isBooked = true;
+                            System.out.println("Room booked successfully!");
+                            break;
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter room number to cancel: ");
+                    int cancelNo = sc.nextInt();
+                    for (Room r : rooms) {
+                        if (r.roomNo == cancelNo && r.isBooked) {
+                            r.isBooked = false;
+                            System.out.println("Booking canceled!");
+                            break;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.exit(0);
+            }
+        }
+    }
+}
