@@ -12,7 +12,7 @@ class Room {
     }
 }
 
-public class Task4 {
+public class task4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
